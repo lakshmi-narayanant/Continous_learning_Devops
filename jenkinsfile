@@ -1,59 +1,41 @@
 pipeline {
     agent any
-    
+
     tools {
-        maven 'MAVEN_HOME' // Assumes "Maven" is the name of the Maven tool configured in Jenkins
+        maven 'MAVEN_HOME' // Assuming 'MAVEN_HOME' is the name of your Maven tool configured in Jenkins
     }
 
     stages {
-        stage('Checkout') {
+        stage('Welcome Stage') {
             steps {
-                // Check out the code from your version control system (e.g., Git)
-                checkout scm
+                bat 'echo "Welcome to Jenkins Pipeline"'
             }
         }
 
-        stage('Build') {
+        stage('Maven Build') {
             steps {
-                // Build the Maven project
-                bat 'mvn clean install'
+                bat 'echo "Executing Maven commands"'
+                bat 'mvn clean install' // You can replace this with your actual Maven build command
             }
         }
 
-        stage('Test') {
-            steps {
-                // Run tests (if applicable)
-                bat 'mvn test'
-            }
-        }
-
-        stage('Package') {
-            steps {
-                // Package the application (if applicable)
-                bat 'mvn package'
-            }
-        }
+        // Add more stages as needed for your pipeline
 
         stage('Deploy') {
             steps {
-                // Deploy the application (if applicable)
-                // You can customize this based on your deployment process
+                bat 'echo "Deployment steps go here"' // Customize this based on your deployment process
             }
         }
     }
 
     post {
         success {
-            // Actions to be performed when the build is successful
-            echo 'Build successful!'
-
-            // You may want to publish artifacts, send notifications, etc.
+            echo 'Build and deployment successful!'
+            // Additional actions for a successful build
         }
         failure {
-            // Actions to be performed when the build fails
-            echo 'Build failed!'
-
-            // You may want to send notifications, trigger other jobs, etc.
+            echo 'Build or deployment failed!'
+            // Additional actions for a failed build
         }
     }
 }
