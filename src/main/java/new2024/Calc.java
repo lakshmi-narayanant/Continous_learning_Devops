@@ -9,6 +9,7 @@ public class Calc {
         char operator;
 
         System.out.print("Enter first number: ");
+        System.out.print("Enter first number added sucess fully");
         num1 = input.nextDouble();
 
         System.out.print("Enter an operator (+, -, *, /,&):");
