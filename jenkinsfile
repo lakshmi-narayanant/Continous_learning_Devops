@@ -1,0 +1,59 @@
+pipeline {
+    agent any
+    
+    tools {
+        maven 'MAVEN_HOME' // Assumes "Maven" is the name of the Maven tool configured in Jenkins
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Check out the code from your version control system (e.g., Git)
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Build the Maven project
+                sh 'mvn clean install'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Run tests (if applicable)
+                sh 'mvn test'
+            }
+        }
+
+        stage('Package') {
+            steps {
+                // Package the application (if applicable)
+                sh 'mvn package'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Deploy the application (if applicable)
+                // You can customize this based on your deployment process
+            }
+        }
+    }
+
+    post {
+        success {
+            // Actions to be performed when the build is successful
+            echo 'Build successful!'
+
+            // You may want to publish artifacts, send notifications, etc.
+        }
+        failure {
+            // Actions to be performed when the build fails
+            echo 'Build failed!'
+
+            // You may want to send notifications, trigger other jobs, etc.
+        }
+    }
+}

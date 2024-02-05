@@ -11,7 +11,7 @@ public class Calc {
         System.out.print("Enter first number: ");
         num1 = input.nextDouble();
 
-        System.out.print("Enter an operator (+, -, *, /,&): ");
+        System.out.print("Enter an operator (+, -, *, /,&):");
         operator = input.next().charAt(0);
 
         System.out.print("Enter second number: ");
