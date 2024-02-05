@@ -1,44 +1,41 @@
 pipeline {
-  agent any
-  tools {
-    maven 'MAVEN_HOME' 
-  }
-  stages {
-    stage ('MyClean') {
-      steps {
-       bat 'mvn clean'       
-      }
+    agent any
+
+    tools {
+        maven 'MAVEN_HOME' // Assuming 'MAVEN_HOME' is the name of your Maven tool configured in Jenkins
     }
-    stage ('MyTest') {
-      steps {
-        bat 'mvn test'
-      }
-    }    
-    stage ('MyPackage') {
-      steps {
-        bat 'mvn package'
-      }
-    }   
-    stage ('MyInstall') {
-      steps {
-        bat 'mvn install'
-      }
-    }   
-    stage ('Deploy') {
-      steps {
-       echo 'Deployed'
-      }
+
+    stages {
+        stage('Welcome Stage') {
+            steps {
+                bat 'echo "Welcome to Jenkins Pipeline"'
+            }
+        }
+
+        stage('Maven Build') {
+            steps {
+                bat 'echo "Executing Maven commands"'
+                bat 'mvn clean install' // You can replace this with your actual Maven build command
+            }
+        }
+
+        // Add more stages as needed for your pipeline
+
+        stage('Deploy') {
+            steps {
+                bat 'echo "Deployment steps go here"' // Customize this based on your deployment process
+            }
+        }
     }
-      stage ('Success') {
-      steps {
-       echo 'Pipeline success'
-      }
-      }
-      stage ('tiaa') {
-      steps {
-       echo 'tiaa msg'
-      }
-      }
-    
-  }
+
+    post {
+        success {
+            echo 'Build and deployment successful!'
+            // Additional actions for a successful build
+        }
+        failure {
+            echo 'Build or deployment failed!'
+            // Additional actions for a failed build
+        }
+    }
 }
