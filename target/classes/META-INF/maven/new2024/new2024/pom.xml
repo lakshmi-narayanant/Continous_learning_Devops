@@ -6,6 +6,7 @@
   
 
   <build>
+	  <finalName>create-calc</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
