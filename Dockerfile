@@ -13,4 +13,4 @@ COPY target/create-calc.jar /app/create-calc.jar
 WORKDIR /app
 
 # Command to run the JAR file
-CMD java -jar create-calc.jar
+
