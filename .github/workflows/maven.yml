@@ -1,5 +1,5 @@
 
-name: Java CI with Maven with lakshmi narayanan T
+name: Java CI with Maven and Developer Lakshmi Narayanan T
 
 on:
   push:
@@ -13,9 +13,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v3
     - name: Set up JDK 17
-      uses: actions/setup-java@v4
+      uses: actions/setup-java@v3
       with:
         java-version: '17'
         distribution: 'temurin'
@@ -23,4 +23,4 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
-   
+    
