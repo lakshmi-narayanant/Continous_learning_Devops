@@ -12,7 +12,7 @@ public class Calc {
         
         num1 = input.nextDouble();
 
-        System.out.print("Enter an operator (+, -, *, /,&):");
+        System.out.print("Enter an operator (+, -, *, /,&,>):");
         operator = input.next().charAt(0);
 
         System.out.print("Enter second number: ");
@@ -24,6 +24,8 @@ public class Calc {
             result = num1 - num2;
         } else if (operator == '*') {
             result = num1 * num2;
+        }    else if (operator == '>') {
+            result =  Math.min(num1, num2);
         } else if (operator == '/') {
             if (num2 != 0) {
                 result = num1 / num2;
