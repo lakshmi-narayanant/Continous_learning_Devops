@@ -6,4 +6,4 @@ COPY target/create-calc.jar /app/create-calc.jar
 # Set the working directory to the newly created directory
 WORKDIR /bin
 # Specify the command to run your application
-CMD java -jar create-calc.jar
+
