@@ -11,5 +11,5 @@ COPY target/create-calc.jar /app/create-calc.jar
 
 # Set the working directory to the application directory
 
-# Command to start a shell prompt
-CMD ["bash"]
+# Command to run the JAR file
+CMD java -jar create-calc.jar
