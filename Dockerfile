@@ -10,6 +10,5 @@ RUN mkdir /app
 COPY target/create-calc.jar /app/create-calc.jar
 
 # Set the working directory to the application directory
-
 # Command to run the JAR file
 CMD java -jar create-calc.jar
